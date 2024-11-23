@@ -1,0 +1,24 @@
+---
+services:
+  {{cookiecutter.project_slug}}:
+    init: true
+    restart: always
+
+    image: ${REPO:-$USER}/{{cookiecutter.__ghcr_slug}}:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy
+
+      cache_from:
+        - python:{{cookiecutter.python_version}}
+        - python:{{cookiecutter.python_version}}-slim
+        - ${REPO:-$USER}/{{cookiecutter.__ghcr_slug}}:latest
+
+    environment:
+      - MODE=${ENV:-prod}
+      - UID=${UID?'UID must be set to match current user to support volume mounts - please set the values in .env / as shell variable before running'}
+      - GID=${GID:?'GID must be set to match current user to support volume mounts - please set the values in .env / as shell variable before running'}
+
+    working_dir: /app
+

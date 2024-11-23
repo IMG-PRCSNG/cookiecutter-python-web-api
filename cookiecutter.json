@@ -1,0 +1,17 @@
+{
+  "project_name": "Cookiecutter Sample",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "project_short_description": "{{ cookiecutter.project_name }} - A cool project",
+  "author": "anonymous",
+  "email": "{{ cookiecutter.author.lower() }}@example.com",
+  "license": "BSD License",
+  "__gh_slug": "{{ cookiecutter.author }}/{{ cookiecutter.project_slug }}",
+  "__ghcr_slug": "{{ cookiecutter.author.lower() }}/{{ cookiecutter.project_slug }}",
+  "python_version": [
+    "3.8",
+    "3.9",
+    "3.10",
+    "3.11",
+    "3.12"
+  ]
+}

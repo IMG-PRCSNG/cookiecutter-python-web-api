@@ -1,0 +1,19 @@
+---
+services:
+  {{cookiecutter.project_slug}}:
+    environment:
+      - MODE="development"
+    volumes:
+      - $PWD:/app
+
+# deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - capabilities: [gpu]
+    #           device_ids: ["0"]
+
+    # shm_size: 2G
+    # ulimits:
+    #   memlock: -1
+    #   stack: 67108864

@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{cookiecutter.project_slug}}"
+dynamic = ["version", "dependencies"]
+description = "{{cookiecutter.project_short_description}}"
+readme = "README.md"
+requires-python = ">= {{ cookiecutter.python_version }}"
+keywords = []
+
+authors = [
+  {name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}"}
+]
+maintainers = [
+  {name = "{{cookiecutter.author}}", email = "{{cookiecutter.email}}"}
+]
+classifiers = [
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3 :: Only",
+{%- if cookiecutter.python_version|float >= 3.8 -%}
+    "Programming Language :: Python :: 3.8",
+{%- endif -%}
+{%- if cookiecutter.python_version|float >= 3.9 -%}
+    "Programming Language :: Python :: 3.9",
+{%- endif -%}
+{%- if cookiecutter.python_version|float >= 3.10 -%}
+    "Programming Language :: Python :: 3.10",
+{%- endif -%}
+{%- if cookiecutter.python_version|float >= 3.11 -%}
+    "Programming Language :: Python :: 3.11",
+{%- endif -%}
+{%- if cookiecutter.python_version|float >= 3.12 -%}
+    "Programming Language :: Python :: 3.12",
+{%- endif -%}
+
+]
+license = {text = "BSD License"}
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "black"  # formatting
+]
+
+[project.urls]
+Homepage = "https://github.com/{{cookiecutter.__gh_slug}}"
+Changelog = "https://github.com/{{cookiecutter.__gh_slug}}/blob/master/CHANGELOG.md"
+Issues = "https://github.com/{{cookiecutter.__gh_slug}}/issues"
+
+[tool.setuptools]
+packages = [ "{{cookiecutter.project_slug}}" ]
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "{{ cookiecutter.project_name }}"
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: "{{ cookiecutter.author }}"
+    family-names: ""
+    email: "{{ cookiecutter.email }}"
+identifiers:
+repository-code: "{{ cookiecutter.__gh_slug }}"
+url: "{{ cookiecutter.__gh_slug }}"
+abstract: >-
+  {{ cookiecutter.project_short_description }}
+keywords: []
+license: "{{ cookiecutter.license }}"

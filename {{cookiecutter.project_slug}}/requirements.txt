@@ -1,0 +1,6 @@
+typer
+nvidia-pytriton
+fastapi[all]
+sqlmodel
+pydantic-settings
+alembic

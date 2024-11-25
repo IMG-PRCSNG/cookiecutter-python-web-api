@@ -15,13 +15,18 @@ env UID=$(id -u) GID=$(id -g) envsubst < .env.template > .env
 ## Getting Started
 
 ```bash
-docker compose up # pass --build if you want to build from local
+docker compose build # build the docker first
+
 ```
 
 ## Usage
 
 ```bash
-docker compose run --rm {{cookiecutter.project_slug}} python3 -m {{cookiecutter.project_slug}} --help
+# Run docker
+docker compose build
+docker compose run --rm -it -v $PWD:/app sample python3 -m {{cookiecutter.project_slug}} --help
+docker compose run --rm -it -v $PWD:/app sample python3 -m {{cookiecutter.project_slug}} run
+docker compose run --rm -it -v $PWD:/app sample python3 -m {{cookiecutter.project_slug}} inference
 ```
 
 ## Changelog

@@ -44,6 +44,27 @@ def run():
         print("Created Dummy:", dummy)
     pass
 
+@app.command()
+def inference():
+    from {{cookiecutter.project_slug}}.inference import load
+    from {{cookiecutter.project_slug}}.config import AppConfig
+
+    import numpy as np
+
+    config = AppConfig()
+    manager = load(config.inference)
+    #manager.start()
+
+    client = manager.get('ExampleModel')
+    print(client)
+    output = client.infer_sample(
+        np.arange(10, dtype=np.float32),
+        np.arange(10, dtype=np.float32)
+    )
+    print(output)
+    client.close()
+    manager.stop()
+    pass
 
 if __name__ == "__main__":
     app()
